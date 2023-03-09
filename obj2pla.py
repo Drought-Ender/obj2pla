@@ -320,7 +320,7 @@ class OBB:
         if tri == 1:
             self.triIndexList = TriIndexList()
             self.triIndexList.read(stream)
-        nesting:int = int(stream.read(1).hex())
+        nesting:int = int(stream.read(1).hex(), 16)
         print(nesting)
         if nesting & 1:
             self.OBBa = OBB()
