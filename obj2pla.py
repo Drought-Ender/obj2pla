@@ -315,7 +315,7 @@ class OBB:
         self.mainPlane.read(stream)
         print(self.mainPlane)
         self.sphere.read(stream)
-        tri = int(stream.read(1).hex())
+        tri = int(stream.read(1).hex(), 16)
         print("tri idx", tri)
         if tri == 1:
             self.triIndexList = TriIndexList()
@@ -633,7 +633,6 @@ def main():
             data:BytesIO = BytesIO(f.read())
         thing = OBBTree()
         thing.read(data)
-        thing.makeOBB()
 
         out = args.output if args.output else os.path.join(base_dir, "platform.obj")
         with open(out, "w") as f:
