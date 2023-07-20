@@ -138,9 +138,9 @@ class Vector3i:
         self.x = struct.unpack(">i", stream.read(4))[0]
 
     def write(self, stream:BytesIO):
-        stream.write(struct.pack(">i", self.z))
-        stream.write(struct.pack(">i", self.y))
         stream.write(struct.pack(">i", self.x))
+        stream.write(struct.pack(">i", self.y))
+        stream.write(struct.pack(">i", self.z))
 
     def __str__(self):
         return f"{self.x} {self.y} {self.z}"
