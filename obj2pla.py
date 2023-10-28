@@ -161,6 +161,13 @@ class Vector3i:
         self.x = int(x)
         self.y = int(y)
         self.z = int(z)
+
+    def flipNormal(self):
+        newX = self.z
+        newZ = self.x
+
+        self.x = newX
+        self.z = newZ
     
     def tuple(self):
         return (self.x, self.y, self.z)
@@ -561,6 +568,7 @@ class ObjFile:
                     raise RuntimeError("Model needs to be triangulated! Only faces with 3 vertices are supported.")
                 face = Vector3i(*map(self.read_vertex, args[1:4]))
                 face.dec()
+                face.flipNormal()
                 print(face)
                 self.faces.append(face)
 
